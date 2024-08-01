@@ -78,16 +78,50 @@ class Gameboard {
                 }
             }
             array = [...arrayQueue]
+            // placing the ship
             for(let x = 0; x < array.length; x++) {
                 this.gameboard[array[x][0]][array[x][1]] = this.ships[i].type
             }
         }
-        console.log(this.gameboard)
+        
     }
-    
+    receiveAttack(coordinates) {
+        let x = coordinates[0]
+        let y = coordinates[1]
+        // checks to see whether or not the coordinate is a ship 
+        // or not and proceeds to change the coordinates to two if 
+        // it is a hit or 1 if it is a miss
+        if(this.gameboard[x][y] === 0) {
+            this.gameboard[x][y] = 1
+        } else {
+            for(let i = 0; i < this.ships.length; i++) {
+                if(this.ships[i].type == this.gameboard[x][y]) {
+                    this.ships[i].hit()
+                    this.gameboard[x][y] = 2
+                }
+            }
+        }
+        // checks to see if all the ships are sunk
+        let a = 0
+        for(let i = 0; i < this.ships.length; i++) {
+            if(this.ships[i].isSunk()) {
+                a++
+            }
+            if(a === 5) {
+                return 'game over'
+            }
+        }
+        
+    }
+}
+
+class Player{
+
 }
 
 const gameboard = new Gameboard();
+gameboard.receiveAttack([5, 5])
+console.log(gameboard)
 
 
 module.exports = { Ship, Gameboard };
