@@ -1,0 +1,49 @@
+
+#game{
+    display: flex;
+}
+.square {
+    height: 30px;
+    width: 30px;
+    background-color: blue;
+    border: 1px solid black;
+}
+.square:hover {
+    background-color: green;
+    color: green;
+}
+
+.row {
+    display: flex;
+    
+}
+
+
+
+#player-one-gameboard {
+    display: flex;
+    flex-direction: column;
+}
+
+#player-two-gameboard {
+    
+    display: flex;
+    flex-direction: column;
+}
+
+#refractor-player-one {
+    width: 320px;
+}
+
+#refractor-player-two {
+    width: 320px;
+}
+
+#player-two-hide {
+    width: 320px;
+}
+
+#player-one-hide {
+    width: 320px;
+}
+
